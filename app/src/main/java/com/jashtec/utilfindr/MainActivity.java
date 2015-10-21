@@ -75,44 +75,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_health));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_food));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_electronics));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_utilities));
-        tabLayout.setOnTabSelectedListener(tabSelectedListener);
-
-        viewPager = (ViewPager) findViewById(R.id.pager);
-
-        //Add Fragments
-        List<Fragment> fragments = new Vector<Fragment>();
-        Bundle page = new Bundle();
-        fragments.add(Fragment.instantiate(this, healthFragment.class.getName(), page));
-        fragments.add(Fragment.instantiate(this, foodFragment.class.getName(), page));
-        fragments.add(Fragment.instantiate(this, electronicsFragment.class.getName(), page));
-        fragments.add(Fragment.instantiate(this, utilitiesFragment.class.getName(), page));
-
-        //PagerAdapter invocation
-        final PagerAdapter adapter = new PagerAdapter
-                (getFragmentManager(), fragments);
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-    }
 }

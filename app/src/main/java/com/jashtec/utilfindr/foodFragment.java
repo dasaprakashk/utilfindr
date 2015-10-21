@@ -7,8 +7,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -52,10 +54,19 @@ public class foodFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_food, container, false);
-        ListView listFood = (ListView) view.findViewById(R.id.listFood);
+        final ListView listFood = (ListView) view.findViewById(R.id.listFood);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, Initializer.getFoodData());
         listFood.setAdapter(adapter);
+
+        //Item Click
+        listFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String)listFood.getItemAtPosition(position);
+                Toast.makeText(getActivity(), "Clicked : " + item, Toast.LENGTH_LONG).show();
+            }
+        });
         return view;
     }
 

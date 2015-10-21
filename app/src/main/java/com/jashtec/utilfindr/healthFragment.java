@@ -7,9 +7,12 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import Common.Adapter.CustomListAdapter;
 import Common.Initializer;
 
 
@@ -49,10 +52,18 @@ public class healthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_health, container, false);
-        ListView listHealth = (ListView) view.findViewById(R.id.listHealth);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, Initializer.getHealthData());
+        final ListView listHealth = (ListView) view.findViewById(R.id.listHealth);
+        CustomListAdapter adapter = new CustomListAdapter(getActivity(), Initializer.getHealthData(), Initializer.getHealthIcons());
         listHealth.setAdapter(adapter);
+
+        //Item Click
+        listHealth.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String itemValue = (String)listHealth.getItemAtPosition(position);
+                Toast.makeText(getActivity(), "Clicked: " + itemValue, Toast.LENGTH_LONG).show();
+            }
+        });
         return view;
     }
 

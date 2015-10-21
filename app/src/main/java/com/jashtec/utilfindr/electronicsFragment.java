@@ -6,8 +6,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import Common.Initializer;
 
@@ -48,10 +50,19 @@ public class electronicsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_electronics, container, false);
-        ListView listElectronics = (ListView) view.findViewById(R.id.listElectronics);
+        final ListView listElectronics = (ListView) view.findViewById(R.id.listElectronics);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, Initializer.getElectronicsData());
         listElectronics.setAdapter(adapter);
+
+        //item click
+        listElectronics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String)listElectronics.getItemAtPosition(position);
+                Toast.makeText(getActivity(), "Clicked : " + item, Toast.LENGTH_LONG).show();
+            }
+        });
         return view;
     }
 

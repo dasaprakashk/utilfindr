@@ -13,5 +13,26 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    
+    <!--Font awesome icons-->
+    <string name="icon_clinic">&#xf067;</string>
+    <string name="icon_hospital">&#xf236;</string>
+    <string name="icon_pharmacy">&#xf015;</string>
+    <string name="icon_diagnosis">&#xf1cd;</string>
+    <string name="icon_petclinic">&#xf1b0;</string>
+    <string name="icon_grocery">&#xf217;</string>
+    <string name="icon_bakery">&#xf1fd;</string>
+    <string name="icon_restaurant">&#xf0f5;</string>
+    <string name="icon_coffee">&#xf0f4;</string>
+    <string name="icon_hotel">&#xf1ad;</string>
+    <string name="icon_browser">&#xf1eb;</string>
+    <string name="icon_carpool">&#xf1b9;</string>
+    <string name="icon_electrician">&#xf1e6;</string>
+    <string name="icon_plumber">&#xf0e3;</string>
+    <string name="icon_hardware">&#xf0ad;</string>
+    <string name="icon_tailor">&#xf0c4;</string>
+    <string name="icon_flower">&#xf06c;</string>
+    <string name="icon_gift">&#xf06b;</string>
+    <string name="icon_stationary">&#xf044;</string>
+    <string name="icon_photocopy">&#xf15b;</string>
 </resources>
