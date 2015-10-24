@@ -36,4 +36,5 @@
     <string name="icon_gift">&#xf06b;</string>
     <string name="icon_stationary">&#xf044;</string>
     <string name="icon_photocopy">&#xf15b;</string>
+    <string name="title_activity_location">LocationActivity</string>
 </resources>

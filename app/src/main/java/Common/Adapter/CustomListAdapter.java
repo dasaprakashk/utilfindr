@@ -9,21 +9,23 @@ import android.widget.TextView;
 
 import com.jashtec.utilfindr.R;
 
+import java.util.ArrayList;
+
+import BusinessObjects.Catalog;
+
 /**
  * Created by Das on 21/10/15.
  */
-public class CustomListAdapter extends ArrayAdapter<String> {
+public class CustomListAdapter extends ArrayAdapter<Catalog> {
     private final Activity context;
-    private final String[] itemName;
-    private final Integer[] iconName;
+    private final ArrayList<Catalog> catalogCollection;
 
-    public CustomListAdapter(Activity context, String[] itemName, Integer[] iconName) {
-        super(context, R.layout.listrow, itemName);
+    public CustomListAdapter(Activity context, ArrayList<Catalog> catalogCollection) {
+        super(context, R.layout.listrow, catalogCollection);
         // TODO Auto-generated constructor stub
 
         this.context=context;
-        this.itemName=itemName;
-        this.iconName=iconName;
+        this.catalogCollection=catalogCollection;
     }
 
     public View getView(int position,View view,ViewGroup parent) {
@@ -32,9 +34,10 @@ public class CustomListAdapter extends ArrayAdapter<String> {
 
         TextView txtIcon = (TextView) rowView.findViewById(R.id.rowicon);
         TextView txtItem = (TextView) rowView.findViewById(R.id.rowtext);
-
-        txtIcon.setText(iconName[position]);
-        txtItem.setText(itemName[position]);
+        Catalog objCatalog = catalogCollection.get(position);
+        txtIcon.setText(objCatalog.getIcon());
+        txtItem.setText(objCatalog.getText());
+        txtItem.setTag(objCatalog.getId());
         return rowView;
 
     }

@@ -1,5 +1,6 @@
 package com.jashtec.utilfindr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,10 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import BusinessObjects.Catalog;
 import Common.Adapter.CustomListAdapter;
 import Common.Initializer;
 
@@ -56,22 +61,35 @@ public class ContentFragment extends Fragment {
         CustomListAdapter adapter;
         Initializer.ContentType type = Initializer.ContentType.values()[contentType];
         if(type == Initializer.ContentType.HEALTH)
-            adapter = new CustomListAdapter(getActivity(), Initializer.getHealthData(), Initializer.getHealthIcons());
+            adapter = new CustomListAdapter(getActivity(), getFilteredList(Initializer.getData(), Initializer.ContentType.HEALTH));
         else if(type == Initializer.ContentType.FOOD)
-            adapter = new CustomListAdapter(getActivity(), Initializer.getFoodData(), Initializer.getFoodIcons());
+            adapter = new CustomListAdapter(getActivity(), getFilteredList(Initializer.getData(), Initializer.ContentType.FOOD));
         else if(type == Initializer.ContentType.ELECTRONICS)
-            adapter = new CustomListAdapter(getActivity(), Initializer.getElectronicsData(), Initializer.getElectronicsIcon());
+            adapter = new CustomListAdapter(getActivity(), getFilteredList(Initializer.getData(), Initializer.ContentType.ELECTRONICS));
         else
-            adapter = new CustomListAdapter(getActivity(), Initializer.getUtilitiesData(), Initializer.getUtilitiesIcon());
+            adapter = new CustomListAdapter(getActivity(), getFilteredList(Initializer.getData(), Initializer.ContentType.UTILITIES));
 
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView rowtext = (TextView)view.findViewById(R.id.rowtext);
-                Toast.makeText(getActivity(), rowtext.getText(), Toast.LENGTH_SHORT).show();
+                TextView rowtext = (TextView) view.findViewById(R.id.rowtext);
+                Intent locationIntent = new Intent(getActivity(), LocationActivity.class);
+                locationIntent.putExtra("ID", String.valueOf(rowtext.getTag()));
+                startActivity(locationIntent);
             }
         });
         return view;
+    }
+
+    private ArrayList<Catalog> getFilteredList(ArrayList<Catalog> data, Initializer.ContentType contentType) {
+        Iterator<Catalog> iterator = data.iterator();
+        int position = contentType.ordinal() + 1;
+        while(iterator.hasNext())
+        {
+            if(iterator.next().getGroupId() != position)
+                iterator.remove();
+        }
+        return data;
     }
 }
