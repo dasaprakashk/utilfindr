@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jashtec.utilfindr.healthFragment">
+    tools:context="com.jashtec.utilfindr.contentFragment">
 
     <ListView
-        android:id="@+id/listHealth"
+        android:id="@+id/listContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></ListView>
 

@@ -24,9 +24,22 @@ public class Initializer {
         };
     }
 
+    public static Integer[] getFoodIcons(){
+        return new Integer[]{
+          R.string.icon_grocery, R.string.icon_bakery, R.string.icon_restaurant
+        };
+    }
+
     public static String[] getElectronicsData() {
         return new String[]{
                 "Browsing centre", "Computers"
+        };
+    }
+
+    public static Integer[] getElectronicsIcon()
+    {
+        return new Integer[]{
+                R.string.icon_browser, R.string.icon_computer
         };
     }
 
@@ -34,5 +47,27 @@ public class Initializer {
         return new String[]{
                 "Electrician", "Plumber", "Hardwares", "Tailor", "Flower Shop", "Gift Shop", "Stationary", "Photocopy"
         };
+    }
+
+    public static Integer[] getUtilitiesIcon()
+    {
+        return new Integer[]{
+                R.string.icon_electrician,
+                R.string.icon_plumber,
+                R.string.icon_hardware,
+                R.string.icon_tailor,
+                R.string.icon_flower,
+                R.string.icon_gift,
+                R.string.icon_stationary,
+                R.string.icon_photocopy
+        };
+    }
+
+    public enum ContentType
+    {
+        HEALTH,
+        FOOD,
+        ELECTRONICS,
+        UTILITIES
     }
 }
