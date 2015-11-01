@@ -5,5 +5,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorIcon">#BDBDBD</color>
+    <color name="colorHighlight">#191970</color>
+    <color name="colorSkyBlue">#87CEFA</color>
 
 </resources>

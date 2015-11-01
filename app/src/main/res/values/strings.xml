@@ -16,6 +16,7 @@
     
     <!--Font awesome icons-->
     <string name="icon_clinic">&#xf067;</string>
+    <string name="icon_gymnasium">&#xf206;</string>
     <string name="icon_hospital">&#xf236;</string>
     <string name="icon_pharmacy">&#xf015;</string>
     <string name="icon_diagnosis">&#xf1cd;</string>
